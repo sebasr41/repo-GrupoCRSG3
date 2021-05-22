@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.15.3/css/all.css}" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link th:rel="stylesheet" th:href="@{css/styles.css}">
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+    <link rel="shortcut icon" href="img/favicon.png"/>
+    <title>tp4-Programación Visual</title>
+</head>
+<body>
+  <div class="container">
+	<!-- Header -->
+  	<div th:replace="layouts/header :: header" ></div>
+    <!-- Content -->
+    <div class="row my-3">
+      <div class="col-12 col-md-8">
+      	<p class="h3 text-center">Formularios</p>
+      </div>
+      <div class="d-none col-md-4 d-md-block">
+      	<p class="h3 text-center">Publicidad</p>
+      </div>
+    </div>
+    
+    <div class="row my-3">
+      <div class="col-12 col-sm-12 col-md-8 mb-3">
+      	<div class="row d-flex justify-content-around">
+	        <div class="col-12 col-sm-4 col-md-4 card">
+	          <img th:src="@{/img/online-register-client.jpg}" class="card-img-top" alt="register-client">
+	          <div class="card-body">
+	            <h5 class="card-title">Cliente</h5>
+	            <p class="card-text">Rellene el formulario en todos los campos para brindar buena información.</p>
+	            <a th:href="@{/cliente}" class="btn btn-primary">Agregar cliente</a>
+	          </div>
+	        </div>
+	        
+	          <div class="col-12 col-sm-4 col-md-4 card">
+	          <img th:src="@{/img/register-product.jpg}" class="card-img-top" alt="register-product">
+	          <div class="card-body">
+	            <h5 class="card-title">Producto</h5>
+	            <p class="card-text">Rellene el formulario para agregar un producto a su lista.</p>
+	            <a th:href="@{/producto}" class="btn btn-primary">Agregar producto</a>
+	          </div>
+	        </div>
+	        
+	        <div class="col-12 col-sm-4 col-md-4 card">
+	          <img th:src="@{/img/buy-product.jpg}" class="card-img-top" alt="buy-product">
+	          <div class="card-body">
+	            <h5 class="card-title">Compra</h5>
+	            <p class="card-text">Rellene el formulario para agregar una compra a su lista.</p>
+	            <a th:href="@{/compra}" class="btn btn-primary">Agregar compra</a>
+	          </div>
+	        </div>
+      	
+      	</div>
+        
+      </div>
+	    
+    	<!-- Publcity -->
+   	 <div th:replace="layouts/aside :: aside" ></div>
+	    	
+  	</div>
+    
+ 
+  	<!-- Footer -->
+  	<div th:replace="layouts/footer :: footer" ></div>
+  	
+  	
+  </div>
+  
+    <script th:src="@{webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{webjars/popper.js/1.16.1-lts/popper.min.js}"></script>
+    <script th:src="@{webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+</body>
+</html>
