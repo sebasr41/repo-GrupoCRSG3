@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tp7.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -45,15 +46,11 @@ public class ProductoServiceImp implements IProductoService {
 		return productos;
 	}
 
+
 	@Override
-	public Producto getProductoPorCodigo(int codigo) {
-		Producto unProducto = new Producto();
-		for(Producto prod : productos) {
-			if(prod.getCodigo() == codigo) {
-				unProducto = prod;
-			}
-		}
-		return unProducto;
+	public Optional<Producto> getProductoPorCodigo(Long codigo) {
+		// TODO Auto-generated method stub
+		return null;
 	}  
 
 }
