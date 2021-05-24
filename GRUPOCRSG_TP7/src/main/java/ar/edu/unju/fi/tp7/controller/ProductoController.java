@@ -19,11 +19,11 @@ public class ProductoController {
 	@Autowired
 	private Producto producto;
 	
+	//@Qualifier("productoUtilService")
 	@Autowired
-	@Qualifier("productoUtilService")
+	@Qualifier("productoServiceMysql")
 	private IProductoService productoService;
 
-	
 	@GetMapping("/producto")
 	public String getProductoPage(Model model) {
 		model.addAttribute(producto);
