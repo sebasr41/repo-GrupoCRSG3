@@ -1,0 +1,17 @@
+.tech img {
+	width: 15%;
+}
+@media screen and (max-width: 768px){
+	.tbClientes {
+		font-size: .8rem !important;	
+	}
+}
+.fa-facebook {
+	color: #3b5998;
+}
+.fa-instagram {
+	color: #3f729b;
+}
+.fa-youtube {
+	color: #c4302b;
+}
