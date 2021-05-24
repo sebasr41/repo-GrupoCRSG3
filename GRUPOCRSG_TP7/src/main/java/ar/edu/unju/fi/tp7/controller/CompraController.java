@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.tp7.models.Cliente;
+import ar.edu.unju.fi.tp7.service.IClienteService;
 import ar.edu.unju.fi.tp7.models.Compra;
 import ar.edu.unju.fi.tp7.models.Producto;
 import ar.edu.unju.fi.tp7.service.ICompraService;
@@ -18,17 +20,22 @@ import ar.edu.unju.fi.tp7.service.IProductoService;
 
 @Controller
 public class CompraController {
-	
 	@Autowired
 	private Compra compra;
 	
-	@Qualifier("productoUtilService")
+	//@Qualifier("productoUtilService")
+	@Qualifier("productoServiceMysql")
 	@Autowired
 	private IProductoService productoService;
 	
-	@Qualifier("compraUtilService")
+	//@Qualifier("compraUtilService")
+	@Qualifier("compraServiceMysql")
 	@Autowired
 	private ICompraService compraService;
+	
+	@Qualifier("clienteServiceMysql")
+	@Autowired
+	private IClienteService clienteService;
 	
 	@GetMapping("/compra")
 	public String getCompraPage(Model model) {
@@ -46,8 +53,13 @@ public class CompraController {
 		
 		Producto producto = productoService.getProductoPorCodigo(compra.getProducto().getCodigo());
 		compra.setProducto(producto);
-		compraService.guardarCompra(compra);				
+		Cliente cliente = clienteService.getClientePorNroDocumento(compra.getCliente().getNroDocumento());
+		compra.setCliente(cliente);
+		
+		compraService.guardarCompra(compra);
 		modelView.addObject("productos", compraService.getAllCompras());
+					
+		
 					
 		return modelView;
 	}
