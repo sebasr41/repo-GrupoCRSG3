@@ -1,7 +1,6 @@
 package ar.edu.unju.fi.tp7.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import ar.edu.unju.fi.tp7.models.Producto;
 
@@ -15,6 +14,8 @@ public interface IProductoService {
     
     public List<Producto> obtenerProductos();
     
-    public Optional<Producto> getProductoPorCodigo(Long codigo);
+    public Producto getProductoPorCodigo(Long codigo);
+
+
 
 }

@@ -13,11 +13,13 @@ import ar.edu.unju.fi.tp7.service.ICompraService;
 public class CompraServiceImpMysql implements ICompraService {
 	
 	@Autowired
-	ICompraRepository compraRepository;
+	private ICompraRepository compraRepository;
 
 	@Override
 	public void guardarCompra(Compra compra) {
 		// TODO Auto-generated method stub
+		double total = compra.getCantidad()*compra.getProducto().getPrecio();
+		compra.setTotal(total);
 		compraRepository.save(compra);
 	}
 

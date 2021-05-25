@@ -23,7 +23,7 @@ public class Producto {
 	private Long id;
 	
 	@Column(name = "prod_codigo", nullable = false)
-	private int codigo;
+	private long codigo;
 	
 	@Column(name = "prod_nombre", length = 100)
 	private String nombre;
@@ -76,11 +76,11 @@ public class Producto {
 	}
 
 	
-	public int getCodigo() {
+	public long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(long codigo) {
 		this.codigo = codigo;
 	}
 

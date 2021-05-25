@@ -45,7 +45,6 @@ public class CompraServiceImp implements ICompraService {
 	@Override
 	public void generarTablaCompra() {
 		compras = TablaCompra.listaCompra;
-		compras.add(new Compra(22,2112,121,new Producto(1,"Zapatilla",10133,"Adidas",1122)));
 		
 	}	
 

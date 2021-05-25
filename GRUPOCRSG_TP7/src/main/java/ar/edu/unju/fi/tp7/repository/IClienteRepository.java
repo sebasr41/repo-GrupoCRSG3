@@ -6,5 +6,5 @@ import ar.edu.unju.fi.tp7.models.Cliente;
 
 public interface IClienteRepository extends CrudRepository<Cliente, Long> {
 	
-
+	public Cliente findByNroDocumento(int nroDocumento);
 }

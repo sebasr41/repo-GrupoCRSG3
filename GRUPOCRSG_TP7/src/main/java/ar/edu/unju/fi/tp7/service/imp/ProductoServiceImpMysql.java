@@ -1,7 +1,6 @@
 package ar.edu.unju.fi.tp7.service.imp;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,19 +29,22 @@ public class ProductoServiceImpMysql implements IProductoService {
 		return productos;
 	}
 
-	@Override
-	public Optional<Producto> getProductoPorCodigo( Long codigo) {
-		// TODO Auto-generated method stub
-		
-		
-		return productoRepository.findById(codigo);
-	}
+
+
 
 
 	@Override
 	public void generarTablaProducto() {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public Producto getProductoPorCodigo(Long codigo) {
+		// TODO Auto-generated method stub
+		Producto producto = productoRepository.findByCodigo(codigo);
+		return producto;
 	}
 
 }

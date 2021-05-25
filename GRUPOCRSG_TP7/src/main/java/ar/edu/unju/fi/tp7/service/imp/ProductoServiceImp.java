@@ -24,8 +24,6 @@ public class ProductoServiceImp implements IProductoService {
     @Override
     public void generarTablaProducto() {
         productos = TablaProducto.listaProductos;
-        productos.add(new Producto(1,"Zapatilla",10133,"Adidas",1122));
-        productos.add(new Producto(2,"Pelota",2133,"Nike",2222));
     }
     
     @Override
@@ -48,7 +46,7 @@ public class ProductoServiceImp implements IProductoService {
 
 
 	@Override
-	public Optional<Producto> getProductoPorCodigo(Long codigo) {
+	public Producto getProductoPorCodigo(Long codigo) {
 		// TODO Auto-generated method stub
 		return null;
 	}  
