@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,5 +67,32 @@ public class CompraController {
 					
 		return modelView;
 	}
+	@GetMapping("/compra-ultimo")
+	public ModelAndView getComprasPage() {
+		ModelAndView model = new ModelAndView("compras");
+		if(compraService.getAllCompras() == null) {
+			compraService.generarTablaCompra();
+		}
+		model.addObject("compra", compraService.getAllCompras());
+		
+		return model;
+		
+	}
+	@GetMapping("/compra-eliminar-{id}")
+	public ModelAndView getCompraEliminarPage(@PathVariable (value = "id")Long id) {
+		//									redirect recarga la lista de cuentas
+		ModelAndView modelView = new ModelAndView("redirect:/compra-guardar");
+		compraService.eliminarCompra(id);
+		return modelView;
+}
 	
+	@GetMapping("/compra-editar-{id}")
+	public ModelAndView getCompraEditPage(@PathVariable (value = "id") Long id) {
+		//ModelAndView modelView = new ModelAndView("nuevo-cliente");
+		ModelAndView modelView = new ModelAndView("nueva-compra");
+		//Recuperamos el empleado que se envio de la tabla por id
+		Optional<Compra> compra = compraService.getCompraPorId(id);
+		modelView.addObject("compra", compra);
+		return modelView;
+}
 }

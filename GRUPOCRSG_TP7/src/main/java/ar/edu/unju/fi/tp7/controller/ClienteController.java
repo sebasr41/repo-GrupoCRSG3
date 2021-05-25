@@ -36,7 +36,7 @@ public class ClienteController {
 	@PostMapping("/cliente-guardar")
 	public ModelAndView guardarClientePage(@ModelAttribute("cliente")Cliente cliente) {
 		
-		ModelAndView model = new ModelAndView("clientes");
+		ModelAndView model = new ModelAndView("resultado-cliente");
 		clienteService.guardarCliente(cliente);
 		model.addObject("clientes",clienteService.obtenerClientes());
 		return model;
@@ -63,7 +63,7 @@ public class ClienteController {
 	//Modificacion de una cuenta de un cliente
 	
 		@GetMapping("/cliente-editar-{id}")
-		public ModelAndView getClienteEditPage(@PathVariable (value = "id") Long id) {
+		public ModelAndView getCuentaEditPage(@PathVariable (value = "id") Long id) {
 			//ModelAndView modelView = new ModelAndView("nuevo-cliente");
 			ModelAndView modelView = new ModelAndView("editar-cuenta");
 			//Recuperamos el empleado que se envio de la tabla por id
@@ -74,12 +74,27 @@ public class ClienteController {
 		
 		//Borrar una cuenta de un cliente
 		@GetMapping("/cliente-eliminar-{id}")
-		public ModelAndView getClienteEliminarPageg(@PathVariable (value = "id")Long id) {
+		public ModelAndView getClienteEliminarPage(@PathVariable (value = "id")Long id) {
 			//									redirect recarga la lista de cuentas
 			ModelAndView modelView = new ModelAndView("redirect:/cliente-cuentas");
 			clienteService.eliminarCliente(id);
 			return modelView;
 		}
-		
+		@GetMapping("/clientes-editar-{id}")
+		public ModelAndView getClienteEditPage(@PathVariable (value = "id") Long id) {
+			//ModelAndView modelView = new ModelAndView("nuevo-cliente");
+			ModelAndView modelView = new ModelAndView("editar-cliente");
+			//Recuperamos el empleado que se envio de la tabla por id
+			Optional<Cliente> cliente = clienteService.getClientePorId(id);
+			modelView.addObject("cliente", cliente);
+			return modelView;
 	
+}
+		@GetMapping("/clientes-eliminar-{id}")
+		public ModelAndView getClientesEliminarPage(@PathVariable (value = "id")Long id) {
+			//									redirect recarga la lista de cuentas
+			ModelAndView modelView = new ModelAndView("redirect:/cliente-listado");
+			clienteService.eliminarCliente(id);
+			return modelView;
+}
 }

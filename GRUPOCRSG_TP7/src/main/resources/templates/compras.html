@@ -28,7 +28,8 @@
 			        <th>P. Marca.</th>
 			        <th>P. Stock</th>
 			        <th>Cantidad</th>
-			        <th>Total</th>			        
+			        <th>Total</th>	
+			        <th>Acciones</th>		        
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -40,7 +41,12 @@
                         <td th:text="${comp.producto.marca}"></td>
                         <td th:text="${comp.producto.stock}"></td>
                         <td th:text="${comp.cantidad}"></td>
-                        <td th:text=" '$ ' + ${comp.getTotal}"></td>                                                
+                        <td th:text=" '$ ' + ${comp.getTotal}"></td>        
+                        <td>
+			    		<!-- Edita por medio del id -->
+			    		<a th:href="@{/compra-editar-} + ${comp.id}" class="btn btn-warning">Editar</a>
+			    		<a th:href="@{/compra-eliminar-} + ${comp.id}" class="btn btn-danger">Eliminar</a>
+			    	</td>                                        
                     </tr>
 			    </tbody>
 			    </table>

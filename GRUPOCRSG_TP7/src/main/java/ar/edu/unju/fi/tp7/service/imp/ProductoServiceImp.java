@@ -49,6 +49,18 @@ public class ProductoServiceImp implements IProductoService {
 	public Producto getProductoPorCodigo(Long codigo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void eliminarProducto(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Optional<Producto> getProductoPorId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}  
 
 }

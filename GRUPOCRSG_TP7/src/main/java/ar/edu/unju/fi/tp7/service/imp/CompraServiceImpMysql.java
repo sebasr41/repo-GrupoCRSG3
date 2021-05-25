@@ -1,9 +1,11 @@
 package ar.edu.unju.fi.tp7.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import ar.edu.unju.fi.tp7.models.Compra;
 import ar.edu.unju.fi.tp7.repository.ICompraRepository;
@@ -34,6 +36,22 @@ public class CompraServiceImpMysql implements ICompraService {
 		// TODO Auto-generated method stub
 		List<Compra> compras= (List<Compra>) compraRepository.findAll();
 		return compras;
+	}
+
+	@Override
+	public Optional<Compra> getCompraPorId(Long id) {
+		Optional<Compra> compra = compraRepository.findById(id);
+		return compra;
+	}
+
+
+		
+
+
+	@Override
+	public void eliminarCompra(Long id) {
+		compraRepository.deleteById(id);
+		
 	}
 
 }
