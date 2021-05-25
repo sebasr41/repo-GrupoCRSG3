@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.tp7.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +82,7 @@ public class CompraController {
 	@GetMapping("/compra-eliminar-{id}")
 	public ModelAndView getCompraEliminarPage(@PathVariable (value = "id")Long id) {
 		//									redirect recarga la lista de cuentas
-		ModelAndView modelView = new ModelAndView("redirect:/compra-guardar");
+		ModelAndView modelView = new ModelAndView("redirect:/compra-ultimo");
 		compraService.eliminarCompra(id);
 		return modelView;
 }
@@ -92,7 +93,13 @@ public class CompraController {
 		ModelAndView modelView = new ModelAndView("nueva-compra");
 		//Recuperamos el empleado que se envio de la tabla por id
 		Optional<Compra> compra = compraService.getCompraPorId(id);
+		List<Producto> productos = productoService.obtenerProductos();
+		List<Cliente> clientes = clienteService.obtenerClientes();
 		modelView.addObject("compra", compra);
+		modelView.addObject("clientes", clientes);
+		modelView.addObject("productos", productos);
+		
+		
 		return modelView;
 }
 }

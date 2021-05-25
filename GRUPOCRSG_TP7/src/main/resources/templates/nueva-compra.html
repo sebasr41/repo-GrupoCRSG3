@@ -18,7 +18,10 @@
   		<div class="col-12 col-sm-12 col-md-8 mb-3">
   			<h2 class="h2 pb-3">Compra</h2>
             <form th:action="@{/compra-guardar}" method="POST" th:object="${compra}">            	
-            	             <input type="hidden" th:field="*{id}" />             	   
+            	             <input type="hidden" th:field="*{id}" /> 
+            	             <input type="hidden" th:field="*{cliente.id}" >           
+            	             
+            	            <input type="hidden" th:field="*{producto.id}" >          	   
           
             	<div class="form-group">
 	                <label for="nombreCliente">Nombre del cliente</label>
