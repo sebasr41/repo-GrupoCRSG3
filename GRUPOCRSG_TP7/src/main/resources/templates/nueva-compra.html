@@ -20,9 +20,14 @@
             <form th:action="@{/compra-guardar}" method="POST" th:object="${compra}">            	
             	
             	<div class="form-group">
-	                <label for="id">Id</label>
-	                <input class="form-control" type="number" id="id" th:field="*{id}">
-        		</div>
+	                <label for="nombreCliente">Nombre del cliente</label>
+	                <select id="nombreCliente" th:field="*{cliente.nroDocumento}" class="form-control form-control-sm">
+	                <option th:each="cli : ${clientes}"
+	                 th:value="${cli.nroDocumento}"
+	                 th:text="${cli.nombreApellido}"	                
+	                 th:selected="false"/>
+	                </select>
+        		</div>    
         		
         		<div class="form-group">
 	                <label for="producto">Nombre del Producto</label>
