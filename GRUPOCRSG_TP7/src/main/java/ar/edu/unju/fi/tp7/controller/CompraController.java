@@ -42,6 +42,7 @@ public class CompraController {
 	@GetMapping("/compra")
 	public String getCompraPage(Model model) {
 		model.addAttribute("compra", compra);	
+		model.addAttribute("clientes", clienteService.obtenerClientes());
 		model.addAttribute("productos", productoService.obtenerProductos());
 		return "nueva-compra";
 	}
