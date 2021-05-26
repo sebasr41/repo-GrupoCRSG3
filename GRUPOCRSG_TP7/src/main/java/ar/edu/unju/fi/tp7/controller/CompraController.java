@@ -3,6 +3,8 @@ package ar.edu.unju.fi.tp7.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,8 @@ public class CompraController {
 	@Autowired
 	private Compra compra;
 	
+	private static final Log LOGGER = LogFactory.getLog(CompraController.class);
+	
 	//@Qualifier("productoUtilService")
 	@Qualifier("productoServiceMysql")
 	@Autowired
@@ -50,6 +54,7 @@ public class CompraController {
 	}
 	@PostMapping("/compra-guardar")
 	public ModelAndView getGuardarComprasPage(@ModelAttribute("compra")Compra compra) {
+		LOGGER.info("anda? :" + compra);
 		ModelAndView modelView = new ModelAndView("compras");
 		
 		if(compraService.getAllCompras() == null) {
@@ -93,6 +98,8 @@ public class CompraController {
 		ModelAndView modelView = new ModelAndView("nueva-compra");
 		//Recuperamos el empleado que se envio de la tabla por id
 		Optional<Compra> compra = compraService.getCompraPorId(id);
+		Optional<Producto> producto = productoService.getProductoPorId(id);
+		
 		List<Producto> productos = productoService.obtenerProductos();
 		List<Cliente> clientes = clienteService.obtenerClientes();
 		modelView.addObject("compra", compra);

@@ -4,7 +4,7 @@ package ar.edu.unju.fi.tp7.models;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,7 +46,8 @@ public class Compra {
 	
 	
 	@Autowired
-	@OneToOne(mappedBy="compra", fetch = FetchType.LAZY)
+	@OneToOne
+	@JoinColumn(name = "cli_id")
 	private Cliente cliente;
 	
 	
