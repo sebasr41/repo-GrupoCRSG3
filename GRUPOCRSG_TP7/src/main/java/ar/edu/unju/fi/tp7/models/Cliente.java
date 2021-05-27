@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -65,10 +65,7 @@ public class Cliente {
 	@Column(name="cli_fechaUltimaCompra")
 	private LocalDate fechaUltimaCompra;
 	
-	@Autowired
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "com_id")
-	private Compra compra;
+
 	
 	/***
 	@Autowired
