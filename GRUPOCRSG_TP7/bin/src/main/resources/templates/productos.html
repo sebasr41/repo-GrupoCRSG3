@@ -8,7 +8,7 @@
     <link th:rel="stylesheet" th:href="@{css/styles.css}">
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
     <link rel="shortcut icon" href="img/favicon.png"/>
-<title>Listado de compras</title>
+<title>Ultimo producto</title>
 </head>
 <body>
 	<div class="container">
@@ -17,40 +17,34 @@
 		<div class="row my-3">
 			<div class="col-12 col-sm-12 col-md-8 mb-3">
 				
-			    <h3 class="h3">Detalle de las compras</h3>
+			    <h3 class="h3">Lista de productos</h3>
 				<table class="table table-striped table-responsive-xl">
 			    <thead>
 			      <tr>
-			        <th>Id</th>
-			        <th>P. Cod.</th>
-			        <th>P. Nom.</th>
-			        <th>P. Prec.</th>
-			        <th>P. Marca.</th>
-			        <th>P. Stock</th>
-			        <th>Cantidad</th>
-			        <th>Total</th>	
-			        <th>Acciones</th>		        
+			        <th>Producto</th>
+			        <th>Precio</th>
+			        <th>Codigo</th>
+			        <th>Marca</th>
+			        <th>Stock</th>
+			        <th>Acciones</th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr th:each="comp : ${compra}">
-                        <td th:text="${comp.id}"></td>
-                        <td th:text="${comp.producto.codigo}"></td>
-                        <td th:text="${comp.producto.nombre}"></td>
-                        <td th:text=" '$ ' + ${comp.producto.precio}"></td>
-                        <td th:text="${comp.producto.marca}"></td>
-                        <td th:text="${comp.producto.stock}"></td>
-                        <td th:text="${comp.cantidad}"></td>
-                        <td th:text=" '$ ' + ${comp.getTotal}"></td>        
-                        <td>
+			      <tr th:each="pro : ${productos}">
+			        <td><span th:text="${pro.nombre}"></span></td>			        			        
+			        <td><span th:text="${pro.precio}" ></span> </td>
+			        <td><span th:text="${pro.codigo}" ></span> </td>
+			        <td><span th:text="${pro.marca}" ></span> </td>
+			        <td><span th:text="${pro.stock}" ></span> </td>
+			        <td>
 			    		<!-- Edita por medio del id -->
-			    		<a th:href="@{/compra-editar-} + ${comp.id}" class="btn btn-warning">Editar</a>
-			    		<a th:href="@{/compra-eliminar-} + ${comp.id}" class="btn btn-danger">Eliminar</a>
-			    	</td>                                        
-                    </tr>
+			    		<a th:href="@{/producto-editar-} + ${pro.id}" class="btn btn-warning">Editar</a>
+			    		<a th:href="@{/producto-eliminar-} + ${pro.id}" class="btn btn-danger">Eliminar</a>
+			    	</td>
+			      </tr>
 			    </tbody>
 			    </table>
-				<a class="btn btn-primary" role="button" href="/compra">Volver al formulario</a>							
+				<a class="btn btn-primary" role="button" href="/producto">Volver al formulario de alta</a>							
 						    
 			</div>
 			<div th:replace="layouts/aside :: aside" ></div>

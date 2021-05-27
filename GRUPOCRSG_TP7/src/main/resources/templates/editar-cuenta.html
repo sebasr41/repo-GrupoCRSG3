@@ -8,7 +8,7 @@
     <link th:rel="stylesheet" th:href="@{css/styles.css}">
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
     <link rel="shortcut icon" href="img/favicon.png"/>
-    <title>Nuevo Cliente</title>
+    <title>Cuentas</title>
 </head>
 <body>
 	<div class="container">
@@ -16,19 +16,15 @@
   		<div th:replace="layouts/header :: header" ></div>
   		<div class="row my-3">
   		<div class="col-12 col-sm-12 col-md-8 mb-3">
-  			<h2 class="h2 pb-3">Alta de un nuevo cliente</h2>
-            <form th:action="@{/cliente-guardar}" th:method="POST" th:object="${cliente}">
-            
-            <input type="hidden" th:field="*{id}">
-            <input type="hidden" th:field="*{cuenta.id}">
-            
-            
-            	<div class="form-group">
-	                <label for="nombre">Nombre y Apellido</label>
-	                <input class="form-control" type="text" id="nombre" th:field="*{nombreApellido}" placeholder="Ingrese nombre y apellido">
-            	</div>
-            	
-                <div class="form-group">
+  			<h2 class="h2 pb-3">Edicion de cuenta de cliente</h2>
+            <form th:action="@{/cliente-guardar}" method="POST" th:object="${cliente}">            	
+            	                    	            	  
+	            <input type="hidden" th:field="*{id}">
+	            <input type="hidden" th:field="*{cuenta.id}">
+	            	            
+	            <!-- ******************Oculto*****************  -->
+	            
+	            <div class="form-group oculto">
 	                <label for="tipoDocumento">Tipo de documento</label>
 	                <select class="form-control" id="tipoDocumento" th:field="*{tipoDocumento}">
 	                    <option value="" selected>Seleccione</option>
@@ -36,62 +32,67 @@
 	                    <option value="pasaporte">Pasaporte</option>
 	                </select>
                 </div>
-                
-        		<div class="form-group">
+                             
+        		<div class="form-group oculto">
 	                <label for="dni">N° de DNI</label>
 	                <input class="form-control" type="number" id="dni" th:field="*{nroDocumento}">
         		</div>
         		
-        		<div class="form-group">
+        		<div class="form-group oculto">
 	                <label for="email">E-mail</label>
 	                <input class="form-control" type="email" id="email" th:field="*{email}" placeholder="Ingrese su email">
         		</div>
-                <div class="form-group">
-	                <label for="password">Password</label>
-	                <input class="form-control" type="password" id="password" th:field="*{password}" placeholder="Ingrese su password">                
+                <div class="form-group ">	                
+	                <input class="form-control" type="hidden" id="password" th:field="*{password}" placeholder="Ingrese su password">                
                 </div>
         
-                <div class="form-group">
+                <div class="form-group oculto">
 	                <label for="fechaNacimiento">Fecha Nacimiento</label>
 	                <input class="form-control" type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}">
                 </div>
         		
-        		<div class="form-group">
+        		<div class="form-group oculto">
 	                <label for="codArea">Cód. Area</label>
 	                <input class="form-control" type="number" id="codArea" th:field="*{codigoAreaTelefono}">        			
         		</div>        
                 
-                <div class="form-group">
+                <div class="form-group oculto">
                 <label for="nroTelefono">Número Teléfono</label>
                 <input class="form-control" type="number" id="nroTelefono" th:field="*{nroTelefono}">                
                 </div>            
                 
-            	<div class="form-group">
+            	<div class="form-group oculto">
 	                <label for="fechaUltimaCompra">Fecha de última compra</label>
 	                <input class="form-control" type="date" id="fechaUltimaCompra" th:field="*{fechaUltimaCompra}">            	
             	</div>
             	
-            	<h3 class="h3 pb-3">Datos de la cuenta</h3>            	            
-            	
-            	<div class="form-group">
+            	<!-- ******************Oculto*****************  -->
+	            
+	            <div class="form-group">
+	                <label for="nombre">Nombre y Apellido</label>
+	                <input class="form-control" type="text" id="nombre" th:field="*{nombreApellido}" placeholder="Ingrese nombre y apellido">
+            	</div>
+	                                	            	           	
+        		<div class="form-group">
 	                <label for="saldo">Saldo</label>
-	                <input class="form-control" type="number" id="saldo" th:field="*{cuenta.saldo}">            	
-            	</div>
-            	
-            	<div class="form-group">
+	                <input class="form-control" type="number" id="saldo" th:field="*{cuenta.saldo}">
+        		</div>
+        		
+        		<div class="form-group">
 	                <label for="fechaCreacion">Fecha de creación</label>
-	                <input class="form-control" type="date" id="fechaCreacion" th:field="*{cuenta.fechaCreacion}">            	
-            	</div>
-            	
-            	<div class="form-group">
+	                <input class="form-control" type="date" id="fechaCreacion" th:field="*{cuenta.fechaCreacion}">
+        		</div>
+        		
+        		 <div class="form-group">
 	                <label for="estado">Estado</label>
 	                <select class="form-control" id="estado" th:field="*{cuenta.estado}">
 	                    <option value="" selected>Seleccione</option>
 	                    <option value="Activa">Activa</option>
 	                    <option value="Inactiva	">Inactiva</option>
 	                </select>
-                </div>            	          
-            	
+                </div>
+        		
+        		        		                                                         	
                 <input class="btn btn-primary" type="submit" value="Guardar">
             </form>
   		</div>

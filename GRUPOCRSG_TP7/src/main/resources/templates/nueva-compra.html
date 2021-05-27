@@ -18,12 +18,11 @@
   		<div class="col-12 col-sm-12 col-md-8 mb-3">
   			<h2 class="h2 pb-3">Compra</h2>
             <form th:action="@{/compra-guardar}" method="POST" th:object="${compra}">            	
-            	
-            	<div class="form-group">
-	                <label for="id">Id</label>
-	                <input class="form-control" type="number" id="id" th:field="*{id}">
-        		</div>
-        		
+            	             <input type="hidden" th:field="*{id}" /> 
+          
+            	             
+            	            <input type="hidden" th:field="*{producto.id}" >          	   
+          
         		<div class="form-group">
 	                <label for="producto">Nombre del Producto</label>
 	                <select id="producto" th:field="*{producto.codigo}" class="form-control form-control-sm">
