@@ -1,34 +1,89 @@
 package ar.edu.unju.fi.tp7.models;
 
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
+@Entity
+@Table(name = "CLIENTES")
 public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Autowired
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cue_id")
+	private Cuenta cuenta;
+	
+	@Column(name = "cli_tipoDocumento")
 	private String tipoDocumento;
+	
+	@Column(name = "cli_nroDocumento")
 	private int nroDocumento;
+	
+	@Column(name = "cli_nombreApellido")
 	private String nombreApellido;
+	
+	@Column(name="cli_email")
 	private String email;
+	
+	@Column(name = "cli_password")
 	private String password;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "cli_fechaNacimiento") 
 	private LocalDate fechaNacimiento;
+	
+	@Column(name="cli_codigoAreaTelefono")
 	private int codigoAreaTelefono;
+	
+	@Column(name="cli_nroTelefono")
 	private int nroTelefono;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name="cli_fechaUltimaCompra")
 	private LocalDate fechaUltimaCompra;
 	
+
+	
+	/***
+	@Autowired
+	@OneToMany(mappedBy = "cliente")
+	private List<Compra> compras = new ArrayList<Compra>();
+	 * 
+	 */	
+
 	public Cliente() {
 	}
 
-	public Cliente(String tipoDocumento, int nroDocumento, String nombreApellido, String email, String password,
-			LocalDate fechaNacimiento, int codigoAreaTelefono, int nroTelefono, LocalDate fechaUltimaCompra) {
+
+	public Cliente(Long id, Cuenta cuenta, String tipoDocumento, int nroDocumento, String nombreApellido, String email,
+			String password, LocalDate fechaNacimiento, int codigoAreaTelefono, int nroTelefono,
+			LocalDate fechaUltimaCompra) {
 		super();
+		this.id = id;
+		this.cuenta = cuenta;
 		this.tipoDocumento = tipoDocumento;
 		this.nroDocumento = nroDocumento;
 		this.nombreApellido = nombreApellido;
@@ -40,6 +95,22 @@ public class Cliente {
 		this.fechaUltimaCompra = fechaUltimaCompra;
 	}
 
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
 
 	public String getTipoDocumento() {
 		return tipoDocumento;
@@ -130,17 +201,19 @@ public class Cliente {
 		this.fechaUltimaCompra = fechaUltimaCompra;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Cliente [tipoDocumento=" + tipoDocumento + ", nroDocumento=" + nroDocumento + ", nombreApellido="
-				+ nombreApellido + ", email=" + email + ", password=" + password + ", fechaNacimiento="
-				+ fechaNacimiento + ", codigoAreaTelefono=" + codigoAreaTelefono + ", nroTelefono=" + nroTelefono
-				+ ", fechaUltimaCompra=" + fechaUltimaCompra + "]";
-	}
+	
 	
 	//Método para obtener la edad:
 	
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", cuenta=" + cuenta + ", tipoDocumento=" + tipoDocumento + ", nroDocumento="
+				+ nroDocumento + ", nombreApellido=" + nombreApellido + ", email=" + email + ", password=" + password
+				+ ", fechaNacimiento=" + fechaNacimiento + ", codigoAreaTelefono=" + codigoAreaTelefono
+				+ ", nroTelefono=" + nroTelefono + ", fechaUltimaCompra=" + fechaUltimaCompra + "]";
+	}
+
+
 	public int getEdad() {
 		int edad = 0;
 		LocalDate hoy = LocalDate.now();
