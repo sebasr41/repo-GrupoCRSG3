@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tp7.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -23,8 +24,6 @@ public class ProductoServiceImp implements IProductoService {
     @Override
     public void generarTablaProducto() {
         productos = TablaProducto.listaProductos;
-        productos.add(new Producto(1,"Zapatilla",10133,"Adidas",1122));
-        productos.add(new Producto(2,"Pelota",2133,"Nike",2222));
     }
     
     @Override
@@ -45,15 +44,23 @@ public class ProductoServiceImp implements IProductoService {
 		return productos;
 	}
 
+
 	@Override
-	public Producto getProductoPorCodigo(int codigo) {
-		Producto unProducto = new Producto();
-		for(Producto prod : productos) {
-			if(prod.getCodigo() == codigo) {
-				unProducto = prod;
-			}
-		}
-		return unProducto;
+	public Producto getProductoPorCodigo(Long codigo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void eliminarProducto(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Optional<Producto> getProductoPorId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}  
 
 }
