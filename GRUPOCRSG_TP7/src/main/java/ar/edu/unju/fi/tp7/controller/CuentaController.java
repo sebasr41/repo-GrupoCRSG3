@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.tp4.controller;
+package ar.edu.unju.fi.tp7.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

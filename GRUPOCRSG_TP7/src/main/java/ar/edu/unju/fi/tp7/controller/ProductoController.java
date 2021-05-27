@@ -1,11 +1,14 @@
 package ar.edu.unju.fi.tp7.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,7 +44,7 @@ public class ProductoController {
 	
 	@GetMapping("/producto-ultimo")
 	public ModelAndView getProductosPage(){		
-		ModelAndView model = new ModelAndView("ultimo-producto");
+		ModelAndView model = new ModelAndView("productos");
 		
 		if(productoService.obtenerProductos() == null) {
 			productoService.generarTablaProducto();
@@ -52,4 +55,21 @@ public class ProductoController {
 		return model;
 	}
 	
+			@GetMapping("/producto-eliminar-{id}")
+			public ModelAndView getProductoEliminarPage(@PathVariable (value = "id")Long id) {
+				//									redirect recarga la lista de cuentas
+				ModelAndView modelView = new ModelAndView("redirect:/producto-ultimo");
+				productoService.eliminarProducto(id);
+				return modelView;
+}
+			
+			
+			@GetMapping("/producto-editar-{id}")
+			public ModelAndView getProductoEditPage(@PathVariable (value = "id") Long id) {
+				//ModelAndView modelView = new ModelAndView("nuevo-cliente");
+				ModelAndView modelView = new ModelAndView("nuevo-producto");
+				Optional<Producto> producto = productoService.getProductoPorId(id);
+				modelView.addObject("producto", producto);
+				return modelView;
+}
 }
