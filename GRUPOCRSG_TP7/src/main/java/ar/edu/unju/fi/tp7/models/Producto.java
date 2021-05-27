@@ -1,14 +1,15 @@
 package ar.edu.unju.fi.tp7.models;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -23,7 +24,7 @@ public class Producto {
 	private Long id;
 	
 	@Column(name = "prod_codigo", nullable = false)
-	private int codigo;
+	private long codigo;
 	
 	@Column(name = "prod_nombre", length = 100)
 	private String nombre;
@@ -37,10 +38,10 @@ public class Producto {
 	@Column(name = "prod_stock")
 	private int stock;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "com_id")
-	private Compra compra;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+    private List<Compra> compras;
 	
+
 	// Constructor empty
 	public Producto() {
 		// TODO Auto-generated constructor stub
@@ -54,7 +55,7 @@ public class Producto {
 		this.precio = precio;
 		this.marca = marca;
 		this.stock = stock;
-		this.compra = compra;
+
 	}
 
 	// Setters and getters
@@ -67,20 +68,14 @@ public class Producto {
 		this.id = id;
 	}
 
-	public Compra getCompra() {
-		return compra;
-	}
 
-	public void setCompra(Compra compra) {
-		this.compra = compra;
-	}
 
 	
-	public int getCodigo() {
+	public long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(long codigo) {
 		this.codigo = codigo;
 	}
 
@@ -120,7 +115,7 @@ public class Producto {
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", marca="
-				+ marca + ", stock=" + stock + ", compra=" + compra + "]";
+				+ marca + ", stock=" + stock + "]";
 	}
 	
 	
