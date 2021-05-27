@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.edu.unju.fi.tp7.model.Cuenta;
+import ar.edu.unju.fi.tp7.models.Cuenta;
 import ar.edu.unju.fi.tp7.repository.ICuentaRepository;
 import ar.edu.unju.fi.tp7.service.ICuentaService;
 
@@ -25,6 +25,12 @@ public class CuentaServiceImpMysql implements ICuentaService{
 	public List<Cuenta> getAllCuentas() {
 		List<Cuenta> cuentas = (List<Cuenta>) cuentaRepository.findAll();
 		return cuentas;
+	}
+
+	@Override
+	public void generarTablaCuenta() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -2,6 +2,7 @@ package ar.edu.unju.fi.tp7.service.imp;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,7 +23,6 @@ public class ClienteServiceImp implements IClienteService {
 	@Override
 	public void generarTablaLCliente() {
 		clientes = TablaCliente.listaClientes;
-		clientes.add(new Cliente("Pasaporte",3245654,"Diaz Fernando","fDiaz@gmail.com","1234ok",LocalDate.of(1998, 04, 14),388,5898950,LocalDate.of(2020, 03, 15)));
 		
 	}
 
@@ -38,6 +38,24 @@ public class ClienteServiceImp implements IClienteService {
 	@Override
 	public List<Cliente> obtenerClientes() {
 		return clientes;
+	}
+
+	@Override
+	public Cliente getClientePorNroDocumento(int nroDocumento) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<Cliente> getClientePorId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void eliminarCliente(Long id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
