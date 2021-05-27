@@ -31,6 +31,7 @@
                         <th>T. última compra hasta hoy</th>
                         <th>T. de nacimiento hasta hoy</th>
                         <th>T. hasta próximo cumpleaños</th>
+                          <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +48,11 @@
                         <td th:text="${cli.getTiempoUltimaCompraHoy}"></td>
                         <td th:text="${cli.getTiempoNacimientoAhoraDias}"></td>
                         <td th:text="${cli.getTiempoHastaCumple}"></td>
+                        <td>
+			    		<!-- Edita por medio del id -->
+			    		<a th:href="@{/clientes-editar-} + ${cli.id}" class="btn btn-warning">Editar</a>
+			    		 <a th:href="@{/clientes-eliminar-} + ${cli.id}" class="btn btn-danger">Eliminar</a> 
+			    	</td>
                     </tr>
                 </tbody>
             </table>

@@ -91,7 +91,18 @@
 	                    <option value="Inactiva	">Inactiva</option>
 	                </select>
                 </div>
+        		<!-- 
+        		<div class="form-group">
+	                <label for="cliente">Nombre del cliente</label>
+	                <select id="cliente" th:field="*{cliente.nroDocumento}" class="form-control form-control-sm">
+	                <option th:each="cli : ${clientes}"
+	                 th:value="${cli.nroDocumento}"
+	                 th:text="${cli.nombreApellido}"	                
+	                 th:selected="false"/>
+	                </select>
+        		</div>                                                      		 		        		                    
         		
+        		 -->
         		        		                                                         	
                 <input class="btn btn-primary" type="submit" value="Guardar">
             </form>

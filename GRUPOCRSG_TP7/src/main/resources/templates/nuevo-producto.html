@@ -16,10 +16,13 @@
 		<div th:replace="layouts/header :: header" ></div>
 		<div class="row my-3">
 			<div class="col-12 col-sm-12 col-md-8 mb-3">
+			
 				<!-- Form -->
 				
 			    <h2 class="h2 pb-3">Alta de un nuevo producto</h2>
 			    <form th:action="@{/producto-guardar}" method="POST" th:object="${producto}" >
+			    
+			    	  <input type="hidden" th:field="*{id}" />
 			    	<div class="form-group">
 				        <label for="codigo">Código del producto</label>
 				        <input class="form-control" type="number" id="codigo" th:field="*{codigo}">			    	

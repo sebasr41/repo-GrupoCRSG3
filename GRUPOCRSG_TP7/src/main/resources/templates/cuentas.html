@@ -40,19 +40,10 @@
 			    		<a th:href="@{/cliente-eliminar-} + ${cli.id}" class="btn btn-danger">Eliminar</a>
 			    	</td>			    			    
 			    </tr>			    			
-			    <!-- 
-			      <tr th:each="cue : ${cuenta}">
-                        <td th:text="${cue.codigo}"></td>
-                        <td th:text="${cue.saldo}"></td>
-                        <td th:text="${ #temporals.format(cue.fechaCreacion, 'dd/MM/yyyy') }"></td>
-                        <td th:text="${cue.estado}"></td>
-                        <td th:text="${cue.cliente.nombreApellido}"></td>
-                                                                                         
-                    </tr>
-			     -->
+			    
 			    </tbody>
 			    </table>
-				<a class="btn btn-primary" role="button" th:href="@{/cuenta}">Volver al formulario</a>							
+				<a class="btn btn-primary" role="button" th:href="@{/cliente}">Volver al formulario</a>							
 						    
 			</div>
 			<div th:replace="layouts/aside :: aside" ></div>
